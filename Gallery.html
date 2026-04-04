@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful World Gallery</title>
+    <link rel="stylesheet" href="Gallery.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="background">
+        <!-- Animated Background Particles -->
+        <div class="particles">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-leaf"></i>
+                <span>NatureVerse</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="glowing-text">Welcome to this Beautiful World</h1>
+                <p class="hero-subtitle">Discover the breathtaking beauty of nature through our curated collection</p>
+                <a href="#gallery" class="cta-button">
+                    <span>Explore Gallery</span>
+                    <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Filter Buttons -->
+        <section class="filter-section" id="gallery">
+            <h2 class="section-title">Our Collection</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="flowers">Flowers</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="space">Space</button>
+                <button class="filter-btn" data-filter="abstract">Abstract</button>
+            </div>
+        </section>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-container">
+            <div class="row" id="gallery-grid">
+                
+                <!-- Flower Category -->
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/4y/wallhaven-4yqlml.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4y/wallhaven-4yqlml.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Golden Petals</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/ne/wallhaven-nekz9w.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ne/wallhaven-nekz9w.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Pink Lotus</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/8o/wallhaven-8ooz92.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/8o/wallhaven-8ooz92.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Purple Alliums</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/0q/wallhaven-0qgll7.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0q/wallhaven-0qgll7.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Golden Lily</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/p2/wallhaven-p2m16e.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/p2/wallhaven-p2m16e.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Soft Rose</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nz12g4.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nz12g4.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Fractal Bloom</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/43/wallhaven-4399zd.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/43/wallhaven-4399zd.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>White Cherry</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/4l/wallhaven-4l21xy.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4l/wallhaven-4l21xy.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Lotus Beauty</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/g8/wallhaven-g89m97.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/g8/wallhaven-g89m97.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Sacred Lotus</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="flowers">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/zx/wallhaven-zxy9gy.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zx/wallhaven-zxy9gy.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Divine Lotus</h3>
+                            <p><i class="fas fa-seedling"></i> Flowers</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nature Category -->
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://images.unsplash.com/photo-1542690969-5a2050285637?q=80&w=2070&auto=format&fit=crop" download class="download-link">
+                            <div class="img1" style="background-image: url('https://images.unsplash.com/photo-1542690969-5a2050285637?q=80&w=2070&auto=format&fit=crop');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Nature's Nest</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/95/wallhaven-956wkk.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/95/wallhaven-956wkk.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Twilight Majesty</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/j3/wallhaven-j3jqmm.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/j3/wallhaven-j3jqmm.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Mountain Flight</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/42/wallhaven-42ey2y.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/42/wallhaven-42ey2y.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Silent Frost</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/48/wallhaven-485k8y.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/48/wallhaven-485k8y.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Ocean Embrace</h3>
+                            <p><i class="fas fa-water"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/1k/wallhaven-1kxo73.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/1k/wallhaven-1kxo73.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Palm Serenity</h3>
+                            <p><i class="fas fa-tree"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/49/wallhaven-49j11k.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/49/wallhaven-49j11k.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Forest Reflection</h3>
+                            <p><i class="fas fa-tree"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzyrrj.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzyrrj.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Golden Glow</h3>
+                            <p><i class="fas fa-sun"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/0w/wallhaven-0ww7px.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0w/wallhaven-0ww7px.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Winter Way</h3>
+                            <p><i class="fas fa-snowflake"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/6o/wallhaven-6o7g9x.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/6o/wallhaven-6o7g9x.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Silent Christmas</h3>
+                            <p><i class="fas fa-snowflake"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/mp/wallhaven-mpjyr9.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/mp/wallhaven-mpjyr9.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Seaside Dreams</h3>
+                            <p><i class="fas fa-water"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/x1/wallhaven-x1xgyz.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/x1/wallhaven-x1xgyz.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Golden Crest</h3>
+                            <p><i class="fas fa-water"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/8x/wallhaven-8xzl9y.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/8x/wallhaven-8xzl9y.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Glacial Sunset</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/ox/wallhaven-ox968l.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ox/wallhaven-ox968l.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Endless Fingers</h3>
+                            <p><i class="fas fa-mountain"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/4g/wallhaven-4gl967.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4g/wallhaven-4gl967.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Darkest Sea</h3>
+                            <p><i class="fas fa-water"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/vm/wallhaven-vm9v38.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/vm/wallhaven-vm9v38.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Ocean Sparks</h3>
+                            <p><i class="fas fa-water"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Space Category -->
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/lm/wallhaven-lme6yy.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/lm/wallhaven-lme6yy.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Galaxy Crest</h3>
+                            <p><i class="fas fa-star"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzkwwo.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzkwwo.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Galaxy Pool</h3>
+                            <p><i class="fas fa-star"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/l3/wallhaven-l3plqp.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/l3/wallhaven-l3plqp.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Stellar Storm</h3>
+                            <p><i class="fas fa-star"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/m9/wallhaven-m9168m.png" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/m9/wallhaven-m9168m.png');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Silent Moon</h3>
+                            <p><i class="fas fa-moon"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/k7/wallhaven-k718o1.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/k7/wallhaven-k718o1.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Astral Evening</h3>
+                            <p><i class="fas fa-star"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="space">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzd6vj.png" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzd6vj.png');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Stars Thundering</h3>
+                            <p><i class="fas fa-bolt"></i> Space</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Abstract Category -->
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/6k/wallhaven-6kw8eq.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/6k/wallhaven-6kw8eq.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Sinking Fate</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nm/wallhaven-nm8ey8.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nm/wallhaven-nm8ey8.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Floating Tree</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/nk/wallhaven-nkjzq6.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nk/wallhaven-nkjzq6.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Lightning Bridge</h3>
+                            <p><i class="fas fa-bolt"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/g8/wallhaven-g8x1vl.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/g8/wallhaven-g8x1vl.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Valley Dwellings</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/p9/wallhaven-p9ervm.png" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/p9/wallhaven-p9ervm.png');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Parachute Drift</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/zx/wallhaven-zxzmvg.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zx/wallhaven-zxzmvg.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Aqua Roar</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/49/wallhaven-49j3wd.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/49/wallhaven-49j3wd.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Fiery Expanse</h3>
+                            <p><i class="fas fa-fire"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/73/wallhaven-735vov.png" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/73/wallhaven-735vov.png');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Hut Flame</h3>
+                            <p><i class="fas fa-fire"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/0w/wallhaven-0w6xxp.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0w/wallhaven-0w6xxp.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Sunset</h3>
+                            <p><i class="fas fa-sun"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/k9/wallhaven-k99kgm.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/k9/wallhaven-k99kgm.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Leaf Love</h3>
+                            <p><i class="fas fa-leaf"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/zy/wallhaven-zykkpv.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zy/wallhaven-zykkpv.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Green Pause</h3>
+                            <p><i class="fas fa-leaf"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="nature">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/ex/wallhaven-exxmq8.jpg" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ex/wallhaven-exxmq8.jpg');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>Dew Drop</h3>
+                            <p><i class="fas fa-tint"></i> Nature</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-category="abstract">
+                    <div class="card-inner">
+                        <a href="https://w.wallhaven.cc/full/o5/wallhaven-o5qpg9.png" download class="download-link">
+                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/o5/wallhaven-o5qpg9.png');">
+                                <div class="overlay">
+                                    <div class="overlay-content">
+                                        <i class="fas fa-download"></i>
+                                        <span>Download</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="card-info">
+                            <h3>"V"</h3>
+                            <p><i class="fas fa-palette"></i> Abstract</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button class="back-to-top" id="backToTop">
+            <i class="fas fa-chevron-up"></i>
+        </button>
+
+        <!-- Footer -->
+        <footer class="footer" id="contact">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-leaf"></i> NatureVerse</h3>
+                    <p>Discover the breathtaking beauty of nature through our curated collection of stunning wallpapers.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Flowers</a></li>
+                        <li><a href="#">Nature</a></li>
+                        <li><a href="#">Space</a></li>
+                        <li><a href="#">Abstract</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for new wallpapers!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 NatureVerse. All rights reserved.</p>
+                <p class="quote">"Find the extraordinary in the ordinary."</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Download functionality
+        document.querySelectorAll('a.download-link').forEach(a => {
+            a.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = this.href;
+                const filename = url.split('/').pop();
+                
+                const tempA = document.createElement('a');
+                tempA.href = url;
+                tempA.download = filename;
+                tempA.style.display = 'none';
+                document.body.appendChild(tempA);
+                tempA.click();
+                document.body.removeChild(tempA);
+                
+                // Show download feedback
+                showNotification('Download started!');
+            });
+        });
+
+        // Notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 2000);
+        }
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        card.style.animation = 'fadeInUp 0.5s ease forwards';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+
+</body>
+</html>
