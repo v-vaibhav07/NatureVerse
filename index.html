@@ -3,21 +3,1023 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful World Gallery</title>
-    <link rel="stylesheet" href="Gallery.css">
+    <title>Beautiful World Gallery - 97 Images</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #7bed9f, #70a1ff);
+            --bg-dark: #1a1a2e;
+            --bg-darker: #16213e;
+            --bg-darkest: #0f3460;
+            --accent-green: #7bed9f;
+            --accent-blue: #70a1ff;
+            --text-white: #fff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --text-subtle: rgba(255, 255, 255, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow-light: rgba(123, 237, 159, 0.3);
+            --shadow-dark: rgba(0, 0, 0, 0.3);
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+        }
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: var(--bg-dark);
+        }
+
+        .background {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 50%, var(--bg-darkest) 100%);
+            position: relative;
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particles span {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        .particles span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particles span:nth-child(2) { left: 20%; animation-delay: 2s; width: 15px; height: 15px; }
+        .particles span:nth-child(3) { left: 35%; animation-delay: 4s; }
+        .particles span:nth-child(4) { left: 50%; animation-delay: 6s; width: 25px; height: 25px; }
+        .particles span:nth-child(5) { left: 65%; animation-delay: 8s; }
+        .particles span:nth-child(6) { left: 75%; animation-delay: 10s; width: 18px; height: 18px; }
+        .particles span:nth-child(7) { left: 85%; animation-delay: 12s; }
+        .particles span:nth-child(8) { left: 25%; animation-delay: 14s; width: 12px; height: 12px; }
+        .particles span:nth-child(9) { left: 55%; animation-delay: 16s; }
+        .particles span:nth-child(10) { left: 90%; animation-delay: 18s; width: 22px; height: 22px; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            5% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all var(--transition-fast);
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 50px;
+            box-shadow: 0 4px 20px var(--shadow-dark);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo i {
+            color: var(--accent-green);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width var(--transition-fast);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-white);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--text-white);
+            border-radius: 3px;
+            transition: all var(--transition-fast);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .glowing-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--text-white);
+            text-shadow: 0 0 30px rgba(123, 237, 159, 0.4);
+            margin-bottom: 20px;
+            animation: glow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 30px rgba(123, 237, 159, 0.4); }
+            to { text-shadow: 0 0 50px rgba(123, 237, 159, 0.6), 0 0 80px rgba(123, 237, 159, 0.3); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all var(--transition-fast);
+            box-shadow: 0 8px 30px var(--shadow-light);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px var(--shadow-light);
+        }
+
+        .cta-button i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+        }
+
+        .mouse {
+            width: 26px;
+            height: 45px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 5px;
+            height: 8px;
+            background: var(--text-white);
+            border-radius: 3px;
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { opacity: 1; top: 8px; }
+            100% { opacity: 0; top: 25px; }
+        }
+
+        .filter-section {
+            padding: 60px 20px 30px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--text-white);
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            background: transparent;
+            color: var(--text-white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: var(--bg-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        /* Add Image Button */
+        .add-image-btn {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa502);
+            border: none;
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .add-image-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .image-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--text-white);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .image-count i {
+            color: var(--accent-green);
+        }
+
+        .image-count span {
+            font-weight: 600;
+            color: var(--accent-green);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8) translateY(50px);
+            transition: all var(--transition-normal);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: var(--text-white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-header h2 i {
+            color: var(--accent-green);
+        }
+
+        .close-modal {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            background: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-white);
+            font-weight: 500;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .form-group label i {
+            margin-right: 8px;
+            color: var(--accent-green);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-white);
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all var(--transition-fast);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(123, 237, 159, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .form-group select option {
+            background: var(--bg-dark);
+            color: var(--text-white);
+        }
+
+        .form-group small {
+            display: block;
+            color: var(--text-subtle);
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
+        .url-preview {
+            margin-top: 15px;
+            border-radius: 12px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .url-preview.active {
+            display: block;
+        }
+
+        .url-preview img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid var(--accent-green);
+        }
+
+        .url-preview .error {
+            padding: 20px;
+            background: rgba(255, 107, 107, 0.2);
+            border: 2px solid #ff6b6b;
+            border-radius: 12px;
+            color: #ff6b6b;
+            text-align: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 12px;
+            color: var(--bg-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--shadow-light);
+        }
+
+        .gallery-container {
+            padding: 40px 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 20px;
+        }
+
+        .card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card.new-card {
+            animation: popIn 0.5s ease forwards;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5) translateY(30px); }
+            50% { transform: scale(1.05) translateY(-10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes popOut {
+            0% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-inner {
+            background: var(--glass-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .card-inner:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px var(--shadow-dark);
+        }
+
+        .img1 {
+            height: 240px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--primary-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .img1:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: var(--bg-dark);
+            transform: translateY(10px);
+            transition: transform var(--transition-fast);
+        }
+
+        .img1:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .overlay-content i {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .overlay-content span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .card-info {
+            padding: 18px;
+        }
+
+        .card-info h3 {
+            color: var(--text-white);
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .card-info p {
+            color: var(--text-subtle);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-info p i {
+            color: var(--accent-green);
+        }
+
+        .download-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        /* Delete Button */
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 107, 107, 0.9);
+            border: none;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all var(--transition-fast);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-inner:hover .delete-btn {
+            opacity: 1;
+        }
+
+        .delete-btn:hover {
+            background: #ff4757;
+            transform: scale(1.15);
+        }
+
+        /* User Badge */
+        .user-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 5px 12px;
+            background: var(--primary-gradient);
+            border-radius: 20px;
+            color: var(--bg-dark);
+            font-size: 0.7rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: all var(--transition-fast);
+            z-index: 10;
+        }
+
+        .card-inner:hover .user-badge {
+            opacity: 1;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary-gradient);
+            border: none;
+            border-radius: 50%;
+            color: var(--bg-dark);
+            font-size: 1.1rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-fast);
+            z-index: 999;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-4px);
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            padding: 14px 22px;
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            border-radius: 10px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateX(120%);
+            transition: transform var(--transition-normal);
+            z-index: 1000;
+            box-shadow: 0 8px 25px var(--shadow-dark);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            color: white;
+        }
+
+        .footer {
+            background: linear-gradient(135deg, #0f0f1a 0%, var(--bg-dark) 100%);
+            padding: 70px 20px 25px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+        }
+
+        .footer-section h3 {
+            color: var(--text-white);
+            font-size: 1.4rem;
+            margin-bottom: 18px;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-section h3 i {
+            color: var(--accent-green);
+        }
+
+        .footer-section h4 {
+            color: var(--text-white);
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+        }
+
+        .footer-section p {
+            color: var(--text-subtle);
+            line-height: 1.7;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul a {
+            color: var(--text-subtle);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .footer-section ul a:hover {
+            color: var(--accent-green);
+            padding-left: 8px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .social-links a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-white);
+            font-size: 1.1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            transform: translateY(-4px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-white);
+            font-size: 0.95rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .newsletter-form button {
+            padding: 14px 18px;
+            border: none;
+            background: var(--primary-gradient);
+            color: var(--bg-dark);
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+
+        .newsletter-form button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 35px;
+            margin-top: 35px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom .quote {
+            font-style: italic;
+            color: var(--accent-green);
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: rgba(26, 26, 46, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right var(--transition-normal);
+                gap: 30px;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 12px 20px;
+            }
+
+            .modal {
+                padding: 25px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.4rem;
+            }
+            
+            .row {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 18px;
+                padding: 12px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+            
+            .img1 {
+                height: 220px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <div class="background">
-        <!-- Animated Background Particles -->
         <div class="particles">
             <span></span><span></span><span></span><span></span><span></span>
             <span></span><span></span><span></span><span></span><span></span>
         </div>
 
-        <!-- Navigation Bar -->
         <nav class="navbar">
             <div class="logo">
                 <i class="fas fa-leaf"></i>
@@ -34,11 +1036,10 @@
             </div>
         </nav>
 
-        <!-- Hero Section -->
         <header class="hero">
             <div class="hero-content">
                 <h1 class="glowing-text">Welcome to this Beautiful World</h1>
-                <p class="hero-subtitle">Discover the breathtaking beauty of nature through our curated collection</p>
+                <p class="hero-subtitle">Discover the breathtaking beauty of nature through our curated collection of 97 stunning wallpapers</p>
                 <a href="#gallery" class="cta-button">
                     <span>Explore Gallery</span>
                     <i class="fas fa-arrow-down"></i>
@@ -51,7 +1052,6 @@
             </div>
         </header>
 
-        <!-- Filter Buttons -->
         <section class="filter-section" id="gallery">
             <h2 class="section-title">Our Collection</h2>
             <div class="filter-buttons">
@@ -60,886 +1060,69 @@
                 <button class="filter-btn" data-filter="nature">Nature</button>
                 <button class="filter-btn" data-filter="space">Space</button>
                 <button class="filter-btn" data-filter="abstract">Abstract</button>
+                <button class="add-image-btn" id="openModal">
+                    <i class="fas fa-plus"></i>
+                    Add Image
+                </button>
+            </div>
+            <div class="image-count">
+                <i class="fas fa-images"></i>
+                Total Images: <span id="totalCount">97</span>
             </div>
         </section>
 
-        <!-- Gallery Grid -->
-        <div class="gallery-container">
-            <div class="row" id="gallery-grid">
-                
-                <!-- Flower Category -->
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/4y/wallhaven-4yqlml.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4y/wallhaven-4yqlml.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Golden Petals</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
+        <!-- Add Image Modal -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2><i class="fas fa-image"></i> Add New Image</h2>
+                    <button class="close-modal" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/ne/wallhaven-nekz9w.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ne/wallhaven-nekz9w.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Pink Lotus</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
+                <form id="addImageForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-link"></i> Image URL</label>
+                        <input type="url" id="imageUrl" placeholder="https://example.com/image.jpg" required>
+                        <small><i class="fas fa-info-circle"></i> Paste any image URL (.jpg, .png, .webp, .gif)</small>
+                        <div class="url-preview" id="urlPreview"></div>
                     </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/8o/wallhaven-8ooz92.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/8o/wallhaven-8ooz92.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Purple Alliums</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-pen"></i> Image Title</label>
+                        <input type="text" id="imageCaption" placeholder="Enter a beautiful title..." required maxlength="30">
+                        <small><i class="fas fa-info-circle"></i> Max 30 characters</small>
                     </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/0q/wallhaven-0qgll7.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0q/wallhaven-0qgll7.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Golden Lily</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-folder"></i> Category</label>
+                        <select id="imageCategory" required>
+                            <option value="">-- Select Category --</option>
+                            <option value="flowers">🌸 Flowers</option>
+                            <option value="nature">🌿 Nature</option>
+                            <option value="space">🌙 Space</option>
+                            <option value="abstract">🎨 Abstract</option>
+                        </select>
                     </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/p2/wallhaven-p2m16e.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/p2/wallhaven-p2m16e.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Soft Rose</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nz12g4.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nz12g4.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Fractal Bloom</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/43/wallhaven-4399zd.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/43/wallhaven-4399zd.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>White Cherry</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/4l/wallhaven-4l21xy.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4l/wallhaven-4l21xy.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Lotus Beauty</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/g8/wallhaven-g89m97.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/g8/wallhaven-g89m97.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Sacred Lotus</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="flowers">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/zx/wallhaven-zxy9gy.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zx/wallhaven-zxy9gy.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Divine Lotus</h3>
-                            <p><i class="fas fa-seedling"></i> Flowers</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Nature Category -->
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://images.unsplash.com/photo-1542690969-5a2050285637?q=80&w=2070&auto=format&fit=crop" download class="download-link">
-                            <div class="img1" style="background-image: url('https://images.unsplash.com/photo-1542690969-5a2050285637?q=80&w=2070&auto=format&fit=crop');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Nature's Nest</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/95/wallhaven-956wkk.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/95/wallhaven-956wkk.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Twilight Majesty</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/j3/wallhaven-j3jqmm.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/j3/wallhaven-j3jqmm.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Mountain Flight</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/42/wallhaven-42ey2y.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/42/wallhaven-42ey2y.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Silent Frost</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/48/wallhaven-485k8y.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/48/wallhaven-485k8y.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Ocean Embrace</h3>
-                            <p><i class="fas fa-water"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/1k/wallhaven-1kxo73.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/1k/wallhaven-1kxo73.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Palm Serenity</h3>
-                            <p><i class="fas fa-tree"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/49/wallhaven-49j11k.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/49/wallhaven-49j11k.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Forest Reflection</h3>
-                            <p><i class="fas fa-tree"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzyrrj.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzyrrj.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Golden Glow</h3>
-                            <p><i class="fas fa-sun"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/0w/wallhaven-0ww7px.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0w/wallhaven-0ww7px.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Winter Way</h3>
-                            <p><i class="fas fa-snowflake"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/6o/wallhaven-6o7g9x.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/6o/wallhaven-6o7g9x.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Silent Christmas</h3>
-                            <p><i class="fas fa-snowflake"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/mp/wallhaven-mpjyr9.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/mp/wallhaven-mpjyr9.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Seaside Dreams</h3>
-                            <p><i class="fas fa-water"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/x1/wallhaven-x1xgyz.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/x1/wallhaven-x1xgyz.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Golden Crest</h3>
-                            <p><i class="fas fa-water"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/8x/wallhaven-8xzl9y.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/8x/wallhaven-8xzl9y.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Glacial Sunset</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/ox/wallhaven-ox968l.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ox/wallhaven-ox968l.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Endless Fingers</h3>
-                            <p><i class="fas fa-mountain"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/4g/wallhaven-4gl967.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/4g/wallhaven-4gl967.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Darkest Sea</h3>
-                            <p><i class="fas fa-water"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/vm/wallhaven-vm9v38.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/vm/wallhaven-vm9v38.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Ocean Sparks</h3>
-                            <p><i class="fas fa-water"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Space Category -->
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/lm/wallhaven-lme6yy.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/lm/wallhaven-lme6yy.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Galaxy Crest</h3>
-                            <p><i class="fas fa-star"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzkwwo.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzkwwo.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Galaxy Pool</h3>
-                            <p><i class="fas fa-star"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/l3/wallhaven-l3plqp.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/l3/wallhaven-l3plqp.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Stellar Storm</h3>
-                            <p><i class="fas fa-star"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/m9/wallhaven-m9168m.png" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/m9/wallhaven-m9168m.png');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Silent Moon</h3>
-                            <p><i class="fas fa-moon"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/k7/wallhaven-k718o1.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/k7/wallhaven-k718o1.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Astral Evening</h3>
-                            <p><i class="fas fa-star"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="space">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nz/wallhaven-nzd6vj.png" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nz/wallhaven-nzd6vj.png');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Stars Thundering</h3>
-                            <p><i class="fas fa-bolt"></i> Space</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Abstract Category -->
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/6k/wallhaven-6kw8eq.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/6k/wallhaven-6kw8eq.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Sinking Fate</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nm/wallhaven-nm8ey8.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nm/wallhaven-nm8ey8.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Floating Tree</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/nk/wallhaven-nkjzq6.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/nk/wallhaven-nkjzq6.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Lightning Bridge</h3>
-                            <p><i class="fas fa-bolt"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/g8/wallhaven-g8x1vl.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/g8/wallhaven-g8x1vl.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Valley Dwellings</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/p9/wallhaven-p9ervm.png" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/p9/wallhaven-p9ervm.png');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Parachute Drift</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/zx/wallhaven-zxzmvg.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zx/wallhaven-zxzmvg.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Aqua Roar</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/49/wallhaven-49j3wd.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/49/wallhaven-49j3wd.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Fiery Expanse</h3>
-                            <p><i class="fas fa-fire"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/73/wallhaven-735vov.png" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/73/wallhaven-735vov.png');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Hut Flame</h3>
-                            <p><i class="fas fa-fire"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/0w/wallhaven-0w6xxp.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/0w/wallhaven-0w6xxp.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Sunset</h3>
-                            <p><i class="fas fa-sun"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/k9/wallhaven-k99kgm.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/k9/wallhaven-k99kgm.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Leaf Love</h3>
-                            <p><i class="fas fa-leaf"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/zy/wallhaven-zykkpv.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/zy/wallhaven-zykkpv.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Green Pause</h3>
-                            <p><i class="fas fa-leaf"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="nature">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/ex/wallhaven-exxmq8.jpg" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/ex/wallhaven-exxmq8.jpg');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>Dew Drop</h3>
-                            <p><i class="fas fa-tint"></i> Nature</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card" data-category="abstract">
-                    <div class="card-inner">
-                        <a href="https://w.wallhaven.cc/full/o5/wallhaven-o5qpg9.png" download class="download-link">
-                            <div class="img1" style="background-image: url('https://w.wallhaven.cc/full/o5/wallhaven-o5qpg9.png');">
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <i class="fas fa-download"></i>
-                                        <span>Download</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="card-info">
-                            <h3>"V"</h3>
-                            <p><i class="fas fa-palette"></i> Abstract</p>
-                        </div>
-                    </div>
-                </div>
-
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus-circle"></i>
+                        Add to Gallery
+                    </button>
+                </form>
             </div>
         </div>
 
-        <!-- Back to Top Button -->
+        <div class="gallery-container">
+            <div class="row" id="gallery-grid"></div>
+        </div>
+
         <button class="back-to-top" id="backToTop">
             <i class="fas fa-chevron-up"></i>
         </button>
 
-        <!-- Footer -->
         <footer class="footer" id="contact">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3><i class="fas fa-leaf"></i> NatureVerse</h3>
-                    <p>Discover the breathtaking beauty of nature through our curated collection of stunning wallpapers.</p>
+                    <p>Discover the breathtaking beauty of nature through our curated collection of 97 stunning wallpapers.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -959,10 +1142,10 @@
                 <div class="footer-section">
                     <h4>Categories</h4>
                     <ul>
-                        <li><a href="#">Flowers</a></li>
-                        <li><a href="#">Nature</a></li>
-                        <li><a href="#">Space</a></li>
-                        <li><a href="#">Abstract</a></li>
+                        <li><a href="#">Flowers (18)</a></li>
+                        <li><a href="#">Nature (35)</a></li>
+                        <li><a href="#">Space (27)</a></li>
+                        <li><a href="#">Abstract (17)</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -979,79 +1162,402 @@
                 <p class="quote">"Find the extraordinary in the ordinary."</p>
             </div>
         </footer>
-
     </div>
 
     <script>
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+        // ========== ALL 97 IMAGES DATA ==========
+        const images = [
+            // FLOWERS (18 images)
+            {url: 'https://w.wallhaven.cc/full/4y/wallhaven-4yqlml.jpg', title: 'Golden Petals', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/ne/wallhaven-nekz9w.jpg', title: 'Pink Lotus', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/8o/wallhaven-8ooz92.jpg', title: 'Purple Alliums', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/0q/wallhaven-0qgll7.jpg', title: 'Golden Lily', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/p2/wallhaven-p2m16e.jpg', title: 'Soft Rose', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/nz/wallhaven-nz12g4.jpg', title: 'Fractal Bloom', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/43/wallhaven-4399zd.jpg', title: 'White Cherry', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/4l/wallhaven-4l21xy.jpg', title: 'Lotus Beauty', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/g8/wallhaven-g89m97.jpg', title: 'Sacred Lotus', category: 'flowers'},
+            {url: 'https://w.wallhaven.cc/full/zx/wallhaven-zxy9gy.jpg', title: 'Divine Lotus', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/d7/98/5e/d7985ee1b312393eee0215b1fe1473c4.jpg', title: 'Velvet Petals', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/8e/36/23/8e3623b5c2644bae1a88e57a8394a3c9.jpg', title: 'Blossom Kiss', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/8b/99/02/8b9902700bdb6776a13f5eaf8e8686e5.jpg', title: 'Petal Dreams', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/e2/58/9d/e2589d6283fb6ca6283ffd062b74484a.jpg', title: 'Garden Grace', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/60/f4/b5/60f4b5e836bf321a018c70497fb355e1.jpg', title: 'Floral Whisper', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/50/fa/65/50fa658d7d49697f6498c893bdda0c37.jpg', title: 'Bloom Essence', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/38/25/d9/3825d96a8e27cbfd025bbfcf1c4c9d6c.jpg', title: 'Soft Elegance', category: 'flowers'},
+            {url: 'https://i.pinimg.com/736x/ed/ba/d5/edbad5d1dc2519aec00b8ce9065dd786.jpg', title: 'Morning Bloom', category: 'flowers'},
 
-        // Download functionality
-        document.querySelectorAll('a.download-link').forEach(a => {
-            a.addEventListener('click', function(e) {
+            // NATURE (35 images)
+            {url: 'https://images.unsplash.com/photo-1542690969-5a2050285637?q=80&w=2070&auto=format&fit=crop', title: "Nature's Nest", category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/95/wallhaven-956wkk.jpg', title: 'Twilight Majesty', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/j3/wallhaven-j3jqmm.jpg', title: 'Mountain Flight', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/42/wallhaven-42ey2y.jpg', title: 'Silent Frost', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/48/wallhaven-485k8y.jpg', title: 'Ocean Embrace', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/1k/wallhaven-1kxo73.jpg', title: 'Palm Serenity', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/49/wallhaven-49j11k.jpg', title: 'Forest Reflection', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/nz/wallhaven-nzyrrj.jpg', title: 'Golden Glow', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/0w/wallhaven-0ww7px.jpg', title: 'Winter Way', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/6o/wallhaven-6o7g9x.jpg', title: 'Silent Christmas', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/mp/wallhaven-mpjyr9.jpg', title: 'Seaside Dreams', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/x1/wallhaven-x1xgyz.jpg', title: 'Golden Crest', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/8x/wallhaven-8xzl9y.jpg', title: 'Glacial Sunset', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/ox/wallhaven-ox968l.jpg', title: 'Endless Fingers', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/4g/wallhaven-4gl967.jpg', title: 'Darkest Sea', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/vm/wallhaven-vm9v38.jpg', title: 'Ocean Sparks', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/0w/wallhaven-0w6xxp.jpg', title: 'Sunset', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/k9/wallhaven-k99kgm.jpg', title: 'Leaf Love', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/zy/wallhaven-zykkpv.jpg', title: 'Green Pause', category: 'nature'},
+            {url: 'https://w.wallhaven.cc/full/ex/wallhaven-exxmq8.jpg', title: 'Dew Drop', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp13523246.jpg', title: 'Spring Bloom', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp6496863.jpg', title: 'Spring Sunset', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp13523116.jpg', title: 'Golden Horizon', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp12045790.jpg', title: 'Spring Whisper', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp13410489.jpg', title: 'Butterfly Dreams', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp13665824.jpg', title: 'Lone Sentinel', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp4098160.jpg', title: 'Heart Tree', category: 'nature'},
+            {url: 'https://wallpapercave.com/wp/wp14853801.webp', title: 'Mountain Peak', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/86/6b/fd/866bfdc50e484818ea308a10dab71173.jpg', title: 'White Dove', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/b0/cc/d4/b0ccd4ab8a03053838a828c4e6628c10.jpg', title: 'Desert Caravan', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/e2/63/23/e263239b3479e1e07a771e3e4ec8fc48.jpg', title: 'Ocean Dreams', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/5a/15/b1/5a15b1906c0e0cefe764d704723fd33b.jpg', title: 'Forest Tranquility', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/a8/7c/8d/a87c8d855d0a8fe6c911e889aabef9dd.jpg', title: 'Enchanted Garden', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/c0/dc/42/c0dc4246c1de7fc552e50e19ecd01959.jpg', title: 'Spring Melody', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/6a/12/a1/6a12a17d0866e4b37c97dc72b2ac9e15.jpg', title: 'Delicate Blossoms', category: 'nature'},
+
+            // Continue in next part...
+        ];
+
+        // Part 2 of images array
+        const images2 = [
+            // NATURE continued (rest of 35)
+            {url: 'https://i.pinimg.com/1200x/2b/98/11/2b98118c7017d58f6dcff76aac2c6a07.jpg', title: 'Peaceful Valley', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/0f/08/38/0f0838d4030a86583c073e7d01fbe54c.jpg', title: 'Dreamy Meadow', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/a9/d9/7e/a9d97ec212032934e1c1e59aa2aeb1f4.jpg', title: 'Floral Symphony', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/5d/eb/d0/5debd0351d39b49617d59e45f3ed59de.jpg', title: 'Tender Blooms', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/38/83/cf/3883cf148615f94f31b3cc2f977d4a36.jpg', title: 'Serene Waters', category: 'nature'},
+            {url: 'https://i.pinimg.com/736x/e1/30/6b/e1306b5a7770059e334378ba915c590c.jpg', title: 'Romantic Petals', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/cd/bd/70/cdbd70a89bc17aecca650e85dc353c16.jpg', title: 'Misty Morning', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/b6/53/df/b653dff1d30632f678d3a99fb7dc0091.jpg', title: 'Golden Hour', category: 'nature'},
+            {url: 'https://i.pinimg.com/1200x/48/f1/47/48f147478b8da0c2fc78ec4991b8e891.jpg', title: 'Enchanted Forest', category: 'nature'},
+
+            // SPACE (27 images - Adding 12 MORE to make exactly 27)
+            {url: 'https://w.wallhaven.cc/full/lm/wallhaven-lme6yy.jpg', title: 'Galaxy Crest', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/nz/wallhaven-nzkwwo.jpg', title: 'Galaxy Pool', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/l3/wallhaven-l3plqp.jpg', title: 'Stellar Storm', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/m9/wallhaven-m9168m.png', title: 'Silent Moon', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/k7/wallhaven-k718o1.jpg', title: 'Astral Evening', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/nz/wallhaven-nzd6vj.png', title: 'Stars Thundering', category: 'space'},
+            {url: 'https://w.wallhaven.cc/full/rd/wallhaven-rdmy51.jpg', title: 'Lunar Stallion', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/e2/ad/58/e2ad58bc4825af98bc6adbfd6dfebf12.jpg', title: 'Lunar Blossom', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/61/95/7f/61957f12bb7d3b2f0510e8169b94ec71.jpg', title: 'Butterfly Moon', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/91/0f/57/910f57b74415dd0417487daf47fe1768.jpg', title: 'Mystic Night', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/b9/f9/6c/b9f96c4b7d7420c7bc883195f6116cfb.jpg', title: 'Celestial Dreams', category: 'space'},
+            {url: 'https://i.pinimg.com/736x/2a/89/0f/2a890f51baaf7aaef09b0f0e3f11cc00.jpg', title: 'Velvet Sky', category: 'space'},
+            {url: 'https://i.pinimg.com/736x/2b/b3/83/2bb383fda1ddd4b666b85651b8b3cdb1.jpg', title: 'Cosmic Wonder', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/5e/f3/80/5ef380fd64b5563889817b53a89916ac.jpg', title: 'Ethereal Light', category: 'space'},
+            {url: 'https://i.pinimg.com/1200x/3d/ed/12/3ded12f0af531062dae45c7f224b53c1.jpg', title: 'Eternal Serenity', category: 'space'},
+            // 12 NEW SPACE IMAGES to make 27 total
+            {url: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200', title: 'Milky Way Magic', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1506443432602-ac2fcd6f54e0?w=1200', title: 'Starry Nights', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=1200', title: 'Nebula Dreams', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1464802686167-b939a6910659?w=1200', title: 'Galaxy Portal', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?w=1200', title: 'Cosmic Dawn', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=1200', title: 'Stellar Path', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1200', title: 'Aurora Borealis', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1520034475321-cbe63696469a?w=1200', title: 'Space Odyssey', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200', title: 'Night Sky', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?w=1200', title: 'Constellation', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200', title: 'Deep Space', category: 'space'},
+            {url: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1200', title: 'Astral Beauty', category: 'space'},
+
+            // ABSTRACT (17 images)
+            {url: 'https://w.wallhaven.cc/full/6k/wallhaven-6kw8eq.jpg', title: 'Sinking Fate', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/nm/wallhaven-nm8ey8.jpg', title: 'Floating Tree', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/nk/wallhaven-nkjzq6.jpg', title: 'Lightning Bridge', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/g8/wallhaven-g8x1vl.jpg', title: 'Valley Dwellings', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/p9/wallhaven-p9ervm.png', title: 'Parachute Drift', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/zx/wallhaven-zxzmvg.jpg', title: 'Aqua Roar', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/49/wallhaven-49j3wd.jpg', title: 'Fiery Expanse', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/73/wallhaven-735vov.png', title: 'Hut Flame', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/o5/wallhaven-o5qpg9.png', title: '"V"', category: 'abstract'},
+            {url: 'https://wallpapercave.com/wp/wp16155386.jpg', title: 'Ferrari Dream', category: 'abstract'},
+            {url: 'https://wallpapercave.com/wp/wp13500050.webp', title: 'Coffee Bliss', category: 'abstract'},
+            {url: 'https://wallpapercave.com/wp/wp15010138.webp', title: 'Latte Love', category: 'abstract'},
+            {url: 'https://w.wallhaven.cc/full/zp/wallhaven-zpoxyj.png', title: 'Crimson Voyage', category: 'abstract'},
+            {url: 'https://i.pinimg.com/1200x/20/5a/af/205aaf8f0d7ee4786a0ffb76da11a792.jpg', title: 'Warm Glow', category: 'abstract'},
+            {url: 'https://i.pinimg.com/736x/bf/85/4e/bf854ef7d9764c2d4a843f84c5ddc691.jpg', title: 'Red Ride', category: 'abstract'},
+            {url: 'https://i.pinimg.com/736x/cf/2f/d7/cf2fd7bdc791a925108396915f7ce9a5.jpg', title: "Lion's Rest", category: 'abstract'},
+            {url: 'https://i.pinimg.com/1200x/72/61/c2/7261c223aa9ee4563f050cedab9f5932.jpg', title: 'Silent Footsteps', category: 'abstract'},
+        ];
+
+        // Combine both arrays
+        const allImages = [...images, ...images2];
+        // Total = 18 flowers + 35 nature + 27 space + 17 abstract = 97 images
+
+        // ========== DOM ELEMENTS ==========
+        const modalOverlay = document.getElementById('modalOverlay');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const addImageForm = document.getElementById('addImageForm');
+        const imageUrlInput = document.getElementById('imageUrl');
+        const imageCaptionInput = document.getElementById('imageCaption');
+        const imageCategorySelect = document.getElementById('imageCategory');
+        const urlPreview = document.getElementById('urlPreview');
+        const galleryGrid = document.getElementById('gallery-grid');
+        const backToTop = document.getElementById('backToTop');
+        const totalCountEl = document.getElementById('totalCount');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const navbar = document.querySelector('.navbar');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        // ========== CATEGORY ICONS ==========
+        const categoryIcons = {
+            flowers: 'fas fa-seedling',
+            nature: 'fas fa-leaf',
+            space: 'fas fa-star',
+            abstract: 'fas fa-palette'
+        };
+
+        // ========== RENDER IMAGES ==========
+        function renderImages() {
+            allImages.forEach((img, index) => {
+                const card = createCardElement(img.url, img.title, img.category, false);
+                setTimeout(() => {
+                    galleryGrid.appendChild(card);
+                    setTimeout(() => card.classList.add('animate'), 50);
+                }, index * 20);
+            });
+            updateImageCount();
+        }
+
+        // ========== CREATE CARD ELEMENT ==========
+        function createCardElement(url, title, category, isUserAdded = true) {
+            const icon = categoryIcons[category] || 'fas fa-image';
+            const categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+            
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-category', category);
+            if (isUserAdded) card.setAttribute('data-user-added', 'true');
+            
+            card.innerHTML = `
+                <div class="card-inner">
+                    ${isUserAdded ? `
+                        <span class="user-badge"><i class="fas fa-user"></i> Your Image</span>
+                        <button class="delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                    ` : ''}
+                    <a href="${url}" download class="download-link">
+                        <div class="img1" style="background-image: url('${url}');">
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="card-info">
+                        <h3>${title}</h3>
+                        <p><i class="${icon}"></i> ${categoryName}</p>
+                    </div>
+                </div>
+            `;
+
+            // Add delete functionality
+            if (isUserAdded) {
+                const deleteBtn = card.querySelector('.delete-btn');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    card.style.animation = 'popOut 0.3s ease forwards';
+                    setTimeout(() => {
+                        card.remove();
+                        updateImageCount();
+                        saveToLocalStorage();
+                        showNotification('Image deleted!', 'error');
+                    }, 300);
+                });
+            }
+
+            // Download functionality
+            const downloadLink = card.querySelector('.download-link');
+            downloadLink.addEventListener('click', function(e) {
                 e.preventDefault();
-                const url = this.href;
-                const filename = url.split('/').pop();
-                
+                const filename = url.split('/').pop() || 'image';
                 const tempA = document.createElement('a');
                 tempA.href = url;
                 tempA.download = filename;
-                tempA.style.display = 'none';
                 document.body.appendChild(tempA);
                 tempA.click();
                 document.body.removeChild(tempA);
-                
-                // Show download feedback
-                showNotification('Download started!');
+                showNotification('Download started!', 'success');
             });
-        });
 
-        // Notification function
-        function showNotification(message) {
+            return card;
+        }
+
+        // ========== UPDATE COUNT ==========
+        function updateImageCount() {
+            totalCountEl.textContent = document.querySelectorAll('.card').length;
+        }
+
+        // ========== VALIDATE URL ==========
+        function validateImageUrl(url) {
+            const allowedFormats = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
+            const lowerUrl = url.toLowerCase();
+            const hasValidExtension = allowedFormats.some(ext => lowerUrl.includes(ext));
+            const isValidUrl = url.startsWith('http://') || url.startsWith('https://');
+            return isValidUrl && hasValidExtension;
+        }
+
+        // ========== PREVIEW IMAGE ==========
+        function previewImage(url) {
+            if (!url) {
+                urlPreview.classList.remove('active');
+                return;
+            }
+
+            if (validateImageUrl(url)) {
+                const img = new Image();
+                img.onload = function() {
+                    urlPreview.innerHTML = `<img src="${url}" alt="Preview">`;
+                    urlPreview.classList.add('active');
+                };
+                img.onerror = function() {
+                    urlPreview.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> Unable to load image</div>`;
+                    urlPreview.classList.add('active');
+                };
+                img.src = url;
+            } else {
+                urlPreview.innerHTML = `<div class="error"><i class="fas fa-exclamation-triangle"></i> Invalid image URL</div>`;
+                urlPreview.classList.add('active');
+            }
+        }
+
+        // ========== SHOW NOTIFICATION ==========
+        function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
             document.body.appendChild(notification);
             
             setTimeout(() => notification.classList.add('show'), 100);
             setTimeout(() => {
                 notification.classList.remove('show');
                 setTimeout(() => notification.remove(), 300);
-            }, 2000);
+            }, 2500);
         }
 
-        // Back to top button
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+        // ========== LOCAL STORAGE ==========
+        function saveToLocalStorage() {
+            const userCards = document.querySelectorAll('.card[data-user-added="true"]');
+            const images = [];
+            userCards.forEach(card => {
+                const img1 = card.querySelector('.img1');
+                const bgImage = img1.style.backgroundImage;
+                const url = bgImage.replace(/url\(['"]?(.*?)['"]?\)/i, '$1');
+                images.push({
+                    url: url,
+                    title: card.querySelector('.card-info h3').textContent,
+                    category: card.dataset.category
+                });
+            });
+            localStorage.setItem('userImages', JSON.stringify(images));
+        }
+
+        function loadFromLocalStorage() {
+            const saved = localStorage.getItem('userImages');
+            if (saved) {
+                const images = JSON.parse(saved);
+                images.forEach(img => {
+                    const card = createCardElement(img.url, img.title, img.category, true);
+                    card.classList.add('animate');
+                    galleryGrid.prepend(card);
+                });
+            }
+        }
+
+        // ========== MODAL HANDLERS ==========
+        openModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            addImageForm.reset();
+            urlPreview.classList.remove('active');
+        });
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                addImageForm.reset();
+                urlPreview.classList.remove('active');
             }
         });
 
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // ========== IMAGE URL PREVIEW ==========
+        let previewTimeout;
+        imageUrlInput.addEventListener('input', (e) => {
+            clearTimeout(previewTimeout);
+            previewTimeout = setTimeout(() => {
+                previewImage(e.target.value);
+            }, 500);
         });
 
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.card');
+        // ========== FORM SUBMISSION ==========
+        addImageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const url = imageUrlInput.value.trim();
+            const title = imageCaptionInput.value.trim();
+            const category = imageCategorySelect.value;
 
+            if (!validateImageUrl(url)) {
+                showNotification('Invalid image URL!', 'error');
+                return;
+            }
+
+            if (!title || !category) {
+                showNotification('Please fill all fields!', 'error');
+                return;
+            }
+
+            const card = createCardElement(url, title, category, true);
+            card.classList.add('new-card');
+            galleryGrid.prepend(card);
+
+            setTimeout(() => card.classList.add('animate'), 100);
+
+            saveToLocalStorage();
+            updateImageCount();
+
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+            addImageForm.reset();
+            urlPreview.classList.remove('active');
+
+            showNotification('Image added successfully!', 'success');
+        });
+
+        // ========== FILTER FUNCTIONALITY ==========
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+                if (btn.classList.contains('add-image-btn')) return;
+                
+                filterBtns.forEach(b => {
+                    if (!b.classList.contains('add-image-btn')) {
+                        b.classList.remove('active');
+                    }
+                });
                 btn.classList.add('active');
                 
                 const filter = btn.dataset.filter;
+                const cards = document.querySelectorAll('.card');
                 
                 cards.forEach(card => {
                     if (filter === 'all' || card.dataset.category === filter) {
@@ -1064,41 +1570,62 @@
             });
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
+        // ========== NAVBAR SCROLL ==========
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         });
 
-        // Hamburger menu
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
+        // ========== HAMBURGER MENU ==========
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        // ========== BACK TO TOP ==========
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
+        // ========== SMOOTH SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
                 }
             });
-        }, observerOptions);
+        });
 
-        cards.forEach(card => observer.observe(card));
+        // ========== KEYBOARD SUPPORT ==========
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+                addImageForm.reset();
+                urlPreview.classList.remove('active');
+            }
+        });
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFromLocalStorage();
+            renderImages();
+        });
     </script>
-
 </body>
 </html>
